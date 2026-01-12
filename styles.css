@@ -1,6 +1,7 @@
 /* ============================================
    Delaney Detailing — styles.css
    Premium metallic + marine theme (CSS-only)
+   UPDATED: mobile nav no longer always open + logo sizing
 ============================================ */
 
 /* -------------------------
@@ -95,39 +96,6 @@ a {
 .micro { font-size: 12px; }
 .fineprint { font-size: 12px; color: rgba(245,247,250,0.78); margin: 10px 0 0; }
 
-/* =========================
-   Logo Styling (NEW)
-========================= */
-
-/* Navbar logo */
-.nav-logo {
-  height: 48px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
-}
-
-@media (max-width: 768px) {
-  .nav-logo {
-    height: 38px;
-  }
-}
-
-/* Hero logo (large brand impact) */
-.hero-logo {
-  max-width: 260px;
-  width: 100%;
-  margin-bottom: 22px;
-  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.65));
-}
-
-@media (max-width: 768px) {
-  .hero-logo {
-    max-width: 200px;
-    margin-bottom: 18px;
-  }
-}
-
 /* -------------------------
    Header / Nav
 ------------------------- */
@@ -148,11 +116,29 @@ a {
   padding: 14px 0;
 }
 
+/* Brand / Logo */
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
   min-width: 210px;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .nav-logo { height: 34px; }
+}
+
+.hero-logo {
+  width: min(320px, 80%);
+  height: auto;
+  display: block;
+  margin: 0 0 14px;
 }
 
 .brand-mark {
@@ -232,9 +218,15 @@ a {
   margin: 2px 0;
 }
 
+/* ✅ FIX: Mobile nav should NOT be always visible */
 .mobile-nav {
+  display: none; /* was: display: block; */
   border-top: 1px solid rgba(255,255,255,0.06);
   background: rgba(11, 15, 20, 0.92);
+}
+
+/* CSS-only reveal when header is focused (works decently without JS) */
+.site-header:focus-within .mobile-nav {
   display: block;
 }
 
@@ -256,9 +248,7 @@ a {
 }
 
 @media (min-width: 940px) {
-  .nav-wrap {
-    grid-template-columns: 1fr auto auto;
-  }
+  .nav-wrap { grid-template-columns: 1fr auto auto; }
   .nav { display: flex; }
   .nav-cta { display: block; }
   .nav-toggle { display: none; }
@@ -683,19 +673,13 @@ textarea:focus-visible {
 
 .card-link:hover { text-decoration: underline; }
 
-.cards-grid,
-.cards-grid .card { min-width: 0; }
-
-.cards-grid + .center { margin-top: 22px; }
-
-/* Cards layout breakpoints */
 @media (min-width: 760px) {
   .cards-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* Services grid (4 columns on large) */
+/* Services grid (4 cols on large) */
 #services .cards-grid { grid-template-columns: 1fr; }
 
 @media (min-width: 760px) {
@@ -706,7 +690,7 @@ textarea:focus-visible {
   #services .cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* Reviews grid: 3 columns on large */
+/* Reviews grid */
 #reviews .cards-grid { grid-template-columns: 1fr; }
 
 @media (min-width: 760px) {
@@ -869,14 +853,11 @@ textarea:focus-visible {
   box-shadow: 0 0 0 6px rgba(0,0,0,0.14);
 }
 
-/* subtle hover shift to mimic slider */
 .gallery-tile:hover .ba-after {
   width: 64%;
   transition: width 220ms ease;
 }
-.gallery-tile .ba-after {
-  transition: width 220ms ease;
-}
+.gallery-tile .ba-after { transition: width 220ms ease; }
 
 @media (min-width: 760px) {
   .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1005,9 +986,7 @@ textarea:focus-visible {
   color: rgba(245,247,250,0.88);
 }
 
-.form.card {
-  padding: 18px;
-}
+.form.card { padding: 18px; }
 
 label {
   display: grid;
@@ -1128,9 +1107,7 @@ input::placeholder, textarea::placeholder {
 }
 
 @media (min-width: 920px) {
-  .footer-grid {
-    grid-template-columns: 1.2fr 1fr 1fr;
-  }
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
 }
 
 /* -------------------------
