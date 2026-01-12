@@ -305,12 +305,17 @@
             <p>Before/after style placeholders — swap in real photos when ready.</p>
           </div>
 
-          <div class="gallery-grid" aria-label="Gallery placeholders">
-            <div class="gallery-tile has-photo">
-  <img class="gallery-photo" src="beforeafter1.png" alt="Before and after detailing - Example 1" loading="lazy" />
-  <div class="ba">
-    <div class="ba-before">Before</div>
-    <div class="ba-after">After</div>
+          <a class="gallery-tile photo-tile" href="#img-1" aria-label="Open photo 1">
+  <img src="beforeafter1.png" alt="Before and after detailing" loading="lazy" />
+</a>
+
+<!-- Lightbox popup for item 1 -->
+<div class="lightbox" id="img-1" aria-hidden="true">
+  <a class="lightbox-close-bg" href="#gallery" aria-label="Close"></a>
+
+  <div class="lightbox-content" role="dialog" aria-label="Image preview">
+    <a class="lightbox-close" href="#gallery" aria-label="Close">×</a>
+    <img src="beforeafter1.png" alt="Before and after detailing - large view" />
   </div>
 </div>
             <div class="gallery-tile"><div class="ba"><div class="ba-before">Before</div><div class="ba-after">After</div></div></div>
