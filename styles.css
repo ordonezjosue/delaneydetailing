@@ -984,3 +984,120 @@ input::placeholder, textarea::placeholder { color: rgba(245,247,250,0.45); }
 }
 
 strong { color: rgba(245,247,250,0.92); }
+
+
+/* ============================================
+   GALLERY (THUMBNAILS) + LIGHTBOX MODAL
+   Paste near the bottom of styles.css
+============================================ */
+
+/* Thumbnails grid */
+.gallery-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+@media (min-width: 720px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Each thumbnail is a button */
+.photo-tile {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius);
+  padding: 10px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.30);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.photo-tile:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30,144,255,0.25);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.40);
+}
+
+.photo-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 8px);
+}
+
+/* Optional: if you want all thumbnails same height/crop */
+@supports (aspect-ratio: 1 / 1) {
+  .photo-tile img {
+    aspect-ratio: 4 / 3;          /* change to 1/1 if you want squares */
+    object-fit: cover;
+  }
+}
+
+/* Lock background scrolling when modal open */
+body.modal-lock {
+  overflow: hidden;
+}
+
+/* Modal wrapper (hidden by default) */
+.modal {
+  position: fixed;              /* THIS is the key */
+  inset: 0;
+  z-index: 999;
+  display: none;                /* hidden until .open */
+  place-items: center;
+  padding: 18px;
+}
+
+/* Show modal when open */
+.modal.open {
+  display: grid;
+}
+
+/* Backdrop */
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.70);
+  backdrop-filter: blur(6px);
+}
+
+/* Modal content box */
+.modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(980px, calc(100vw - 36px));
+  max-height: calc(100vh - 36px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(10,14,20,0.92);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.65);
+  padding: 14px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* The large image */
+.modal-content img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 120px);
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+
