@@ -646,99 +646,108 @@ img { max-width: 100%; height: auto; display: block; }
 /* =========================
    Gallery Photos + Lightbox
 ========================= */
-
-.gallery-grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr; /* mobile: 1 column */
+/* =========================
+   Gallery grid (mobile friendly)
+========================= */
+.gallery-grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns:1fr;
 }
 
-@media (min-width: 760px) {
-  .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width:760px){
+  .gallery-grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); }
 }
 
 /* Thumbnail tile */
-.photo-tile {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.30);
-  aspect-ratio: 4 / 3; /* keeps thumbnails consistent */
+.photo-tile{
+  display:block;
+  width:100%;
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:18px;
+  background:rgba(255,255,255,0.02);
+  box-shadow:0 12px 28px rgba(0,0,0,0.30);
+  overflow:hidden;
+  cursor:pointer;
+
+  /* important: keeps thumbs consistent and prevents huge images */
+  aspect-ratio:4 / 3;
+  padding:0;
 }
 
-.photo-tile img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover; /* IMPORTANT: stops huge images */
+.photo-tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-.photo-tile:hover {
+.photo-tile:hover{
   border-color: rgba(30,144,255,0.25);
-  box-shadow: var(--shadow);
 }
 
-/* Lightbox (CSS-only using :target) */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: none;
+/* =========================
+   Modal popup
+========================= */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
 }
 
-.lightbox:target { display: block; }
+.modal.open{ display:block; }
 
-.lightbox-close-bg {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.75);
   backdrop-filter: blur(6px);
 }
 
-.lightbox-content {
-  position: relative;
-  width: min(1000px, calc(100% - 28px));
+.modal-content{
+  position:relative;
+  width:min(1000px, calc(100% - 28px));
   margin: 8vh auto 0;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.14);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.14);
   background: rgba(10,14,20,0.92);
   box-shadow: 0 22px 80px rgba(0,0,0,0.65);
-  overflow: hidden;
+  overflow:hidden;
 }
 
-.lightbox-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-height: 78vh;
-  object-fit: contain;
+.modal-content img{
+  width:100%;
+  height:auto;
+  max-height:78vh;
+  object-fit:contain;
+  display:block;
   background: rgba(0,0,0,0.20);
 }
 
-.lightbox-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 28px;
-  line-height: 1;
-  color: var(--white);
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(255,255,255,0.14);
-  text-decoration: none;
+.modal-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  font-size:28px;
+  line-height:1;
+  color:#fff;
+  background:rgba(0,0,0,0.55);
+  border:1px solid rgba(255,255,255,0.14);
+  cursor:pointer;
 }
 
-.lightbox-close:hover {
+.modal-close:hover{
   background: rgba(30,144,255,0.18);
   border-color: rgba(30,144,255,0.35);
 }
+
+/* Prevent page scroll when modal open */
+.modal-lock{ overflow:hidden; }
+
 
 /* -------------------------
    Reviews
