@@ -95,6 +95,39 @@ a {
 .micro { font-size: 12px; }
 .fineprint { font-size: 12px; color: rgba(245,247,250,0.78); margin: 10px 0 0; }
 
+/* =========================
+   Logo Styling (NEW)
+========================= */
+
+/* Navbar logo */
+.nav-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    height: 38px;
+  }
+}
+
+/* Hero logo (large brand impact) */
+.hero-logo {
+  max-width: 260px;
+  width: 100%;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.65));
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    max-width: 200px;
+    margin-bottom: 18px;
+  }
+}
+
 /* -------------------------
    Header / Nav
 ------------------------- */
@@ -655,30 +688,6 @@ textarea:focus-visible {
 
 .cards-grid + .center { margin-top: 22px; }
 
-.cards-grid { margin-top: 0; }
-
-.cards-grid { grid-template-columns: 1fr; }
-
-.cards-grid { }
-
-.cards-grid {}
-
-/* Services cards grid */
-.cards-grid,
-.cards-grid {}
-
-/* General multi-card layout */
-.cards-grid {}
-
-/* Dedicated grid for services and reviews */
-.cards-grid {}
-
-/* Use a shared grid for multiple sections */
-.cards-grid {}
-
-/* Main cards grid for services/testimonials */
-.cards-grid {}
-
 /* Cards layout breakpoints */
 @media (min-width: 760px) {
   .cards-grid {
@@ -686,53 +695,22 @@ textarea:focus-visible {
   }
 }
 
-/* Services section uses 4 cards; allow 2x2 at mid widths */
-.cards-grid.cards-4 {}
-
-/* We'll use a separate grid for services to ensure 4 columns at large screens */
-.cards-grid {}
-
-/* -------------------------
-   Services grid (4 columns on large)
-------------------------- */
-.cards-grid {
-  /* default already set above */
-}
-
-.cards-grid {
-  /* keep as-is */
-}
-
-.cards-grid {
-  /* keep as-is */
-}
-
-/* We'll target the services section cards via parent class */
-#services .cards-grid {
-  grid-template-columns: 1fr;
-}
+/* Services grid (4 columns on large) */
+#services .cards-grid { grid-template-columns: 1fr; }
 
 @media (min-width: 760px) {
-  #services .cards-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  #services .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 1100px) {
-  #services .cards-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  #services .cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* Reviews grid: 3 columns on large */
-#reviews .cards-grid {
-  grid-template-columns: 1fr;
-}
+#reviews .cards-grid { grid-template-columns: 1fr; }
 
 @media (min-width: 760px) {
-  #reviews .cards-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  #reviews .cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* -------------------------
