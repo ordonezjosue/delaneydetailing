@@ -194,6 +194,13 @@ img { max-width: 100%; height: auto; display: block; }
 /* -------------------------
    Hero
 ------------------------- */
+/* HERO LOGO SIZE (big logo on the page) */
+.hero-logo {
+  width: 220px;   /* ← change this number */
+  height: auto;
+}
+
+
 .hero {
   position: relative;
   padding: calc(var(--space-7) - 10px) 0 var(--space-7);
