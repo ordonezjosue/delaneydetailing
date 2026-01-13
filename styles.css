@@ -101,7 +101,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* -------------------------
-   Header / Nav
+   Header / Nav (SIMPLIFIED — NO MENU)
 ------------------------- */
 .site-header {
   position: sticky;
@@ -112,24 +112,23 @@ img { max-width: 100%; height: auto; display: block; }
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.nav-wrap {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
+.nav-wrap--simple {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
-  padding: 14px 0;
+  padding: 10px 0;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  min-width: 210px;
 }
 
 .nav-logo {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.10);
@@ -137,84 +136,12 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 4px;
 }
 
-.hero-logo {
-  width: min(320px, 100%);
-  height: auto;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.14);
-  padding: 10px;
-}
-
-.nav {
-  display: none;
-  gap: 18px;
-  align-items: center;
-}
-
-.nav a {
-  color: rgba(245,247,250,0.82);
-  font-size: 14px;
-  padding: 10px 10px;
-  border-radius: 12px;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.nav a:hover {
-  background: rgba(30,144,255,0.10);
-  color: var(--white);
-}
-
-.nav-cta { display: none; }
-
-.nav-toggle {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.03);
-  color: var(--white);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: rgba(245,247,250,0.85);
-  border-radius: 999px;
-  margin: 2px 0;
-}
-
+/* Hide old nav elements if any still exist */
+.nav,
+.nav-cta,
+.nav-toggle,
 .mobile-nav {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  background: rgba(11, 15, 20, 0.92);
-  display: block;
-}
-
-.mobile-nav-inner {
-  display: grid;
-  gap: 10px;
-  padding: 14px 0 18px;
-}
-
-.mobile-nav a {
-  padding: 12px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
-}
-
-.mobile-nav a:hover { background: rgba(30,144,255,0.10); }
-
-@media (min-width: 940px) {
-  .nav { display: flex; }
-  .nav-cta { display: block; }
-  .nav-toggle { display: none; }
-  .mobile-nav { display: none; }
+  display: none !important;
 }
 
 /* -------------------------
