@@ -196,7 +196,7 @@ img { max-width: 100%; height: auto; display: block; }
 ------------------------- */
 /* HERO LOGO SIZE (big logo on the page) */
 .hero-logo {
-  width: 220px;   /* ← change this number */
+  width: 300px;   /* ← change this number */
   height: auto;
 }
 
